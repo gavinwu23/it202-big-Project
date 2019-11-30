@@ -31,13 +31,16 @@
         <a class="nav-link" href="#home">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#screen2">Screen 2</a>
+        <a class="nav-link" href="#library">Library</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#screen3">Screen 3</a>
+        <a class="nav-link" href="#weather">Weather</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#about">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#random">Random</a>
       </li>
     </ul>
   </div>
@@ -47,13 +50,17 @@
   <div class="content" id="home">
 
   </div>
-  <div class="content" id="screen2">
-    This is screen 2
+  <div class="content" id="library">
+
   </div>
-  <div class="content" id="screen3">
-    This is screen 3
+  <div class="content" id="weather">
+
   </div>
   <div class="content" id="about">
+    About
+  </div>
+
+  <div class="content" id="random">
     About
   </div>
 
@@ -70,6 +77,11 @@
       function hideScreens() {
         $(".content").hide();
       }
+
+      // we want to load the home page right away from the get go.
+  		var home1 = "#home";
+  		$(home1).show();
+  		$(home1).load("page_content/" + home1.replace("#","") + ".html");
 
       // when we click on a navbar item, it hides the current screen, then it will load another
       $(".nav-link").on("click", function(){
