@@ -71,12 +71,12 @@
         $(".content").hide();
       }
 
-      // when we click on a navbar item, it hides the current screen, then it will load another screen.
+      // when we click on a navbar item, it hides the current screen, then it will load another
       $(".nav-link").on("click", function(){
         hideScreens();
         var target = $(this).attr("href");
         $(target).show();
-        $(target).load("page_content/_" + target.replace("#","") + ".html");
+        $(target).load("page_content/" + target.replace("#","") + ".html");
       });
     });
   </script>
