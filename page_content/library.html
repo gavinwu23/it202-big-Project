@@ -1,1 +1,87 @@
-<h1> this is the library page </h1>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Library page</title>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+
+  </head>
+  <body>
+
+
+    <div class = "theMAP" id="map"  ></div>
+
+
+    <script>
+
+      // create a google maps of the libaries location
+      // When the user clicks the marker, an info window opens displaying information about the library.
+
+      function initMap() {
+        var chicago = {lat: 41.8781, lng: -87.6298}; // we want to map to load in on the center of chicago
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 11,
+          center: chicago
+        });
+
+        var endpoint = "https://data.cityofchicago.org/resource/x8fc-8rcq.json";
+        var query = endpoint + "?";
+
+        // call the ajax call
+        // right now if we click upcoming movies, there is none in the api so for now do this way then do it later
+        $.get(query,
+        function(response) {
+            $.each(response,function(i,v) {
+                // libraries information
+                var libraryName = v.name_;
+                var phone = v.phone;
+                var address = v.address;
+                var hours = v.hours_of_operation;
+                var website = v.website.url;
+                var latti = v.location.latitude;
+                var longgi = v.location.longitude;
+
+                // build the content that goes inside the marker when it is clicked on.
+                var desc1 = "hello i am a temp place holder.";
+
+             // // create new info window
+             var iwindow1 = new google.maps.InfoWindow({
+               content: desc1 // content string is the display box when u click on marker
+             });
+
+             // // create new marker
+             var markerr = new google.maps.Marker ({
+                position:new google.maps.LatLng(latti, longgi),
+                map: map
+             });
+
+             // listener
+             markerr.addListener("click",function() {
+                 iwindow1.open(map,markerr);
+             });
+
+         }); // loop
+        });// get
+
+    } // end of init map function
+
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxbnPjmpOFJaeCTeFv-By7kw9ONncSqy4&callback=initMap">
+    </script>
+  </body>
+</html>
