@@ -5,13 +5,46 @@
   <meta name="viewport" content="width=device-width">
   <title>Weather Api</title>
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous" ></script>
+<style>
+  .responsive {
+    width: auto;
+    height: auto;
+  }
+  </style>
 </head>
 <body>
+
+<img class="sunsun" src="images/sun.jpg" class ="responsive">
+<h5>Enter a city to view its weather!</h5>
+<br>
+
   <input id="city"></input>
   <button id="w1">Enter</button>
   <div class="ShowWeatherForcast"></div>
 
-  
+  <br>
+  <ul class="mdc-image-list my-image-list">
+  <li class="mdc-image-list__item">
+    <div class="mdc-image-list__image-aspect-container">
+      <img class="mdc-image-list__image" src="images/city.jpeg">
+    </div>
+    <div class="mdc-image-list__supporting">
+      <span class="mdc-image-list__label">a </span>
+    </div>
+  </li>
+
+  <li class="mdc-image-list__item">
+    <div class="mdc-image-list__image-aspect-container">
+      <img class="mdc-image-list__image" src="images/weather.jpg">
+    </div>
+    <div class="mdc-image-list__supporting">
+      <span class="mdc-image-list__label">a</span>
+    </div>
+  </li>
+
+</ul>
+
+
 
   <script type="text/javascript">
     $(document).ready(function(){
