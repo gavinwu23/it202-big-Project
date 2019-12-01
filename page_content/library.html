@@ -21,7 +21,7 @@
   </head>
   <body>
 
-
+<h1 align="center"><font color="blue"> Libraries Across Chicago </font></h1>
     <div class = "theMAP" id="map"  ></div>
 
 
@@ -56,7 +56,8 @@
                 var longgi = v.location.longitude;
 
                 // build the content that goes inside the marker when it is clicked on.
-                var desc1 = "hello i am a temp place holder.";
+                var desc1 = libraryName + "<br>" + phone + "<br>" + address + "<br>" + hours + "<br>" +
+                website;
 
              // // create new info window
              var iwindow1 = new google.maps.InfoWindow({
