@@ -1,0 +1,20 @@
+{
+  "short_name": "Library Library",
+  "name": "Library Library",
+  "icons": [
+    {
+      "src": "/it202-bigProject/icon1.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/it202-bigProject/icon2.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/it202-bigProject/index.html",
+  "background_color": "#3367D6",
+  "display": "standalone",
+  "theme_color": "#3367D6"
+}
