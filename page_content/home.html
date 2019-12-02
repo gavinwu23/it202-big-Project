@@ -4,41 +4,116 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>repl.it</title>
-    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+
+<link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+  <style>
+    body {margin: 0;}
+    :root {
+      --mdc-theme-primary: #D50032;
+    }
+
+    .responsive {
+      width: auto;
+      height: auto;
+    }
+
+  </style>
 
 
   </head>
   <body>
-    <!-- <button id="add-to-favorites"
-   class="mdc-icon-button"
-   aria-label="Add to favorites"
-   aria-hidden="true"
-   aria-pressed="false">
-   <i class="material-icons mdc-icon-button__icon mdc-icon-button__icon--on">favorite</i>
-   <i class="material-icons mdc-icon-button__icon">favorite_border</i>
-</button> -->
+     <aside class="mdc-drawer mdc-drawer--modal" data-mdc-auto-init="MDCDrawer">
+    <div class="mdc-drawer__content">
+      <nav class="mdc-list">
+        <a class="mdc-list-item mdc-list-item--activated" href="#" aria-current="page">
+          <i class="material-icons mdc-list-item__graphic" aria-hidden="true">inbox</i>
+          <span class="mdc-list-item__text">Inbox</span>
+        </a>
+        <a class="mdc-list-item" href="#">
+          <i class="material-icons mdc-list-item__graphic" aria-hidden="true">send</i>
+          <span class="mdc-list-item__text">Outgoing</span>
+        </a>
+        <a class="mdc-list-item" href="#">
+          <i class="material-icons mdc-list-item__graphic" aria-hidden="true">drafts</i>
+          <span class="mdc-list-item__text">Drafts</span>
+        </a>
+      </nav>
+    </div>
+  </aside>
 
-<button class="mdc-button" >
-  <div class="mdc-button__ripple"></div>
-  <span class="mdc-button__label">Button</span>
-</button>
+
+  <div class="mdc-drawer-scrim"></div>
+
+    <header class="mdc-top-app-bar">
+  <div class="mdc-top-app-bar__row">
+    <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+      <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button">menu</button>
+      <span class="mdc-top-app-bar__title">Welcome to Library Library Library</span>
+    </section>
+    <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
+      <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Download">file_download</button>
+      <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Print this page">print</button>
+      <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Bookmark this page">bookmark</button>
+    </section>
+  </div>
+</header>
+
+<br>
+<br>
+<br>
+
+<h1 align="center">This app </h1>
+<img class="liblib" src="images/library2.jpg" class ="responsive">
+<img class="liblib" src="images/library2.jpg" class ="responsive">
 
 
 
 
 
 
+<script>
+// we want to load the home page right away from the get go.
 
+window.mdc.autoInit();
+</script>
     <script>
-      // window.mdc.autoInit();
-      // mdc.ripple.MDCRipple.attachTo(document.querySelector('.mdc-button'));
 
 
+    $(document).ready(function() {
+
+      // function to hide content. Then somewhere else it will load another screen.
+      function hideScreens() {
+        $(".content").hide();
+      }
+
+      // when we click on a navbar item, it hides the current screen, then it will load another
+      $(".liblib").on("click", function(){
+        hideScreens();
+        var target = "#library";
+        $(target).show();
+        $(target).load("page_content/" + target.replace("#","") + ".html");
+      });
+    });
+
+       var drawer = document.querySelector('.mdc-drawer').MDCDrawer;
+
+      // open drawer on nav icon
+      document.getElementsByClassName("mdc-top-app-bar__navigation-icon")[0].addEventListener("click", function(){
+        drawer.open = true;
+      });
 
 
+      // close drawer on selection
+      var navs = document.getElementsByClassName("mdc-list-item");
+
+      for (let i = 0; i < navs.length; i++) {
+        navs[i].addEventListener("click", function() {
+          drawer.open = false;
+        })
+      };
 
     </script>
   </body>
