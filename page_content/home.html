@@ -51,7 +51,7 @@
   <div class="mdc-top-app-bar__row">
     <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
       <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button">menu</button>
-      <span class="mdc-top-app-bar__title">Welcome to Library Library Library</span>
+      <span class="mdc-top-app-bar__title">IT202 Big Proj</span>
     </section>
     <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
       <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Download">file_download</button>
@@ -65,9 +65,18 @@
 <br>
 <br>
 
-<h1 align="center">This app </h1>
+<h1 align="center">Welcome to Library and More! </h1>
 <img class="liblib" src="images/library2.jpg" class ="responsive">
-<img class="liblib" src="images/library2.jpg" class ="responsive">
+<img class="wetwet" src="images/ww.png" class ="responsive">
+<h3> Click the library picture to go to the library page </h3>
+<h3>Click the cloud picture to go to the weather page </h3>
+<p>Or use the navbar to move around </p>
+<br>
+<br>
+<h4>This application has 2 main features </h4>
+<h5>The first one is displaying all chicago libraries in a map. You can click on a marker and it will display information about it </h5>
+<h5>The second is, a weather station. You type in the name of a CITY and then it will display the current real life time weather of it! </h5>
+
 
 
 
@@ -89,10 +98,18 @@ window.mdc.autoInit();
         $(".content").hide();
       }
 
-      // when we click on a navbar item, it hides the current screen, then it will load another
+      // when we click on the library picture, go to the library page
       $(".liblib").on("click", function(){
         hideScreens();
         var target = "#library";
+        $(target).show();
+        $(target).load("page_content/" + target.replace("#","") + ".html");
+      });
+
+      // when we click on the weather picture, go to the weather page.
+      $(".wetwet").on("click", function(){
+        hideScreens();
+        var target = "#weather";
         $(target).show();
         $(target).load("page_content/" + target.replace("#","") + ".html");
       });
