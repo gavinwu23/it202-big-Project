@@ -68,14 +68,21 @@
 <h1 align="center">Welcome to Library and More! </h1>
 <img class="liblib" src="images/library2.jpg" class ="responsive">
 <img class="wetwet" src="images/ww.png" class ="responsive">
-<h3> Click the library picture to go to the library page </h3>
+<img class="camcam" src="images/camera.jpg" class ="responsive">
+
+
+
+
+<h3>Click the library picture to go to the library page </h3>
 <h3>Click the cloud picture to go to the weather page </h3>
+<h3>Click the camera picture to take a selfie!</h3>
 <p>Or use the navbar to move around </p>
 <br>
 <br>
-<h4>This application has 2 main features </h4>
+<h4>This application has 3 main features </h4>
 <h5>The first one is displaying all chicago libraries in a map. You can click on a marker and it will display information about it </h5>
 <h5>The second is, a weather station. You type in the name of a CITY and then it will display the current real life time weather of it! </h5>
+<h5>The third is if you want to take a selfie or picture! and then display it</h5>
 
 
 
@@ -113,7 +120,15 @@ window.mdc.autoInit();
         $(target).show();
         $(target).load("page_content/" + target.replace("#","") + ".html");
       });
-    });
+      // when we click on the weather picture, go to the weather page.
+      $(".camcam").on("click", function(){
+        hideScreens();
+        var target = "#picture";
+        $(target).show();
+        $(target).load("page_content/" + target.replace("#","") + ".html");
+      });
+
+    }); // document ready
 
        var drawer = document.querySelector('.mdc-drawer').MDCDrawer;
 
