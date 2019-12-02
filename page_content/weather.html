@@ -5,11 +5,27 @@
   <meta name="viewport" content="width=device-width">
   <title>Weather Api</title>
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous" ></script>
+
+  <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <style>
+
   .responsive {
     width: auto;
     height: auto;
   }
+
+  .my-masonry-image-list {
+  @include mdc-image-list-masonry-columns(5);
+}
+
+.my-image-list {
+  @include mdc-image-list-standard-columns(5);
+  max-width: 960px;
+}
   </style>
 </head>
 <body>
@@ -23,7 +39,7 @@
   <div class="ShowWeatherForcast"></div>
 
   <br>
-  <ul class="mdc-image-list my-image-list">
+  <ul class="mdc-image-list mdc-image-list--masonry my-masonry-image-list">
   <li class="mdc-image-list__item">
     <div class="mdc-image-list__image-aspect-container">
       <img class="mdc-image-list__image" src="images/city.jpeg">
@@ -42,8 +58,48 @@
     </div>
   </li>
 
+  <li class="mdc-image-list__item">
+    <div class="mdc-image-list__image-aspect-container">
+      <img class="mdc-image-list__image" src="images/beijing.jpeg">
+    </div>
+    <div class="mdc-image-list__supporting">
+      <span class="mdc-image-list__label">BEIJING</span>
+    </div>
+  </li>
+
+  <li class="mdc-image-list__item">
+    <div class="mdc-image-list__image-aspect-container">
+      <img class="mdc-image-list__image" src="images/dubai.jpg">
+    </div>
+    <div class="mdc-image-list__supporting">
+      <span class="mdc-image-list__label">DUBAI</span>
+    </div>
+  </li>
+
+  <li class="mdc-image-list__item">
+    <div class="mdc-image-list__image-aspect-container">
+      <img class="mdc-image-list__image" src="images/losAngles.jpg">
+    </div>
+    <div class="mdc-image-list__supporting">
+      <span class="mdc-image-list__label">LA</span>
+    </div>
+  </li>
+
+  <li class="mdc-image-list__item">
+    <div class="mdc-image-list__image-aspect-container">
+      <img class="mdc-image-list__image" src="images/paris.jpeg">
+    </div>
+    <div class="mdc-image-list__supporting">
+      <span class="mdc-image-list__label">PARIS</span>
+    </div>
+  </li>
+
 </ul>
 
+
+<script>
+window.mdc.autoInit();
+</script>
 
 
   <script>
@@ -51,7 +107,7 @@
 
       $("#w1").click(function(){
 
-        console.log("button clicked");
+      //  console.log("button clicked");
 
             var city = $("#city").val();
             var apiKey  = '56b5ba11f92a72ad60c2a45142ba6e0f';
