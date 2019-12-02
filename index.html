@@ -5,6 +5,8 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
 	<title>3 screen app</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/dexie/2.0.4/dexie.min.js"></script>
+
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	 crossorigin="anonymous">
 
@@ -76,6 +78,16 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
   <script>
+
+		// global database
+		window.db = new Dexie('MyDB');
+
+		// Declare tables, IDs and indexes
+		db.version(1).stores({
+			items: '++id, category, item',
+			history: '++id'
+		});
+
     $(document).ready(function() {
 
       // function to hide content. Then somewhere else it will load another screen.

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width">
   <title>Weather Api</title>
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous" ></script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dexie/2.0.4/dexie.min.js"></script>
   <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -36,7 +36,16 @@
 
   <input id="city"></input>
   <button id="w1">Enter</button>
+  <button class = "show-items" id="showB">Show search History</button>
   <div class="ShowWeatherForcast"></div>
+
+<br>
+<br>
+<p>Search History (Compare and Contrast) (Click on Show Search History) </p>
+    <div id="itemsList">
+      <ul>
+      </ul>
+    </div>
 
   <br>
   <ul class="mdc-image-list mdc-image-list--masonry my-masonry-image-list">
@@ -101,7 +110,6 @@
 // window.mdc.autoInit();
 </script>
 
-
   <script>
     $(document).ready(function(){
 
@@ -123,7 +131,15 @@
                 $.each(data.weather, function(index, val){
 
                   printW += '<p><b>' + data.name + "</b></p>"+ data.main.temp + '&deg;F ' +
-                  ' | ' + val.main + ", " + val.description
+                  ' | ' + val.main + ", " + val.description;
+
+                  // store it inside the database
+                  db.items.add({
+                    item: data.name,
+                    category: data.main.temp
+                  }).then(function() {
+                    alert(data.name + " added! To the search history (Database!)")
+                  });
 
                 });
 
@@ -132,8 +148,25 @@
 
             })
 
-      });
-    });
+      }); // click search weather
+
+      // when clicked on show search history, we display everything into the DB
+      $(".show-items").on("click", function(){
+        $("#itemsList ul").empty()
+
+          db.items.each(item => showItem(item));
+
+      }); // click show history button
+
+    }); // document ready
+
+    // function to show item from the database
+    function showItem (item) {
+      var li = $("<li>");
+      li.text(item.category + ": " + item.item);
+      $("#itemsList ul").append(li);
+    }
+
   </script>
 
 </body>
